@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve myflask
+After=network.target
+
+[Service]
+User=juan
+Group=www-data
+WorkingDirectory=/opt/jd/propios/flask_padron_app
+Environment="PATH=/opt/jd/propios/flask_padron_app/venv/bin"
+ExecStart=/opt/jd/propios/flask_padron_app/venv/bin/uwsgi --ini myflask.ini
+
+[Install]
+WantedBy=multi-user.target
