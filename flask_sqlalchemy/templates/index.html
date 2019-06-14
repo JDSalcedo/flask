@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="row">
+        <div class="car card-body">
+            <form action="buscar" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="ruc" placeholder="RUC">
+                </div>
+                <button class="btn btn-primary btn-block">Buscar</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="car card-body">
+            <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                <thead>
+                    <tr>
+                        <td>Tipo Doc.</td>
+                        <td>Cod Agencia.</td>
+                        <td>Cod. Conf.</td>
+                        <td>Valor</td>
+                        <td>Opc.</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for data in datas %}
+                <tr>
+                    <td>{{data.tipoDocumento}}</td>
+                    <td>{{data.codAgencia}}</td>
+                    <td>{{data.codConfiguracion}}</td>
+                    <td>{{data.valor}}</td>
+                    <td>
+                        <a href="/edit/{{data.idEmisor}}/{{data.tipoDocumento}}/{{data.codAgencia}}/{{data.codConfiguracion}}" class="btn btn-secondary">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
